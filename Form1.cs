@@ -33,7 +33,7 @@ namespace Quiz_Objects
             Question q1 = new Question(questionText, questionAnswer, wrongAnswers);
             //Or create with literals
             Question q2 = new Question("What color is an elephant?", "Gray", new List<string> { "Pink", "Green", "Purple" });
-            Question q2 = new Question("What does a cat say?", "Meow", new List<string> { "Quack", "Woof", "Beep" });
+            Question q3 = new Question("What does a cat say?", "Meow", new List<string> { "Quack", "Woof", "Beep" });
             //Add quiz questions to a list
             QuizQuestions = new List<Question> { q1, q2, q3 };
         }
@@ -52,6 +52,18 @@ namespace Quiz_Objects
             List<string> answers = question.AllAnswers;
             //Deselect all the radio buttons
             foreach (RadioButton rb in QuizRadioButtons)
+            {
+                rb.Checked = false;
+            }
+            //Set or reset the label result so it does not show result from previoius question
+            lblResult.Text = "??";
+            //Use the answeers to set the text for each RadioButton
+            for (int a = 0; a < answers.Count; a++)
+            {
+                QuizRadioButtons[a].Text = answers[a];
+            }
+            //And display the question text
+            lblQuestion.Text = question.QuestionText;
         }
     }
 }

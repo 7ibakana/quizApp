@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Quiz_Objects
 {
-    class Class1
+    class Question
     {
         //Constructor
         public Question(string questionText, string correctAnswer, List<String> wrongAnswers)
@@ -37,7 +37,7 @@ namespace Quiz_Objects
                     //Pick a random answer from all answers
                     int index = random.Next(allAnswers.Count);
                     //Fetch that answer, and remove from the list of all answers
-                    string answer = allAnswers[index0];
+                    string answer = allAnswers[index];
                     allAnswers.RemoveAt(index);
                     //Pick a random location to insert this answer into shuffled answers
                     int insertIndex = random.Next(shuffledAnswers.Count);

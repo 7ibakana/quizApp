@@ -65,5 +65,43 @@ namespace Quiz_Objects
             //And display the question text
             lblQuestion.Text = question.QuestionText;
         }
-    }
-}
+
+        private void btnCheckAnswer_Click(object sender, EventArgs e)
+        {
+            Question currentQuestion = QuizQuestions[CurrentQuestionNumber];
+            //Which RadioButton was selected? The text of that raidio button is the user's answer
+            string userAnswer = null;
+            foreach (RadioButton rb in QuizRadioButtons)
+            {
+                if (rb.Checked == true)
+                {
+                    userAnswer = rb.Text;
+                }
+            }
+            if (userAnswer == null)
+            {
+                MessageBox.Show("Pick an answer", "Error");
+                return;
+            }
+            if (currentQuestion.IsCorrect(userAnswer)) //Determine if the user's answer is the correct one
+            {
+                lblResult.Text = "Correct!";
+                score++; //Increase score
+            }
+            else
+            {
+                lblResult.Text = $"Wrong. The correct answer is {currentQuestion.CorrectAnswer}";
+            }
+            //Disable btnCheckAnswer, enable btnNext, focus on btnNext
+            btnCheckAnswer.Enabled = false;
+            btnNext.Enabled = true;
+            btnNext.Focus();
+            //Method.  Can be called for a Question object
+            }   
+            public bool IsCorrect(String answer)
+            {
+                return answer == CorrectAnswer;
+            }
+        }
+        
+    }   

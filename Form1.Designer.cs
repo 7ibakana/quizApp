@@ -101,6 +101,7 @@
             this.btnCheckAnswer.TabIndex = 5;
             this.btnCheckAnswer.Text = "Check Answer";
             this.btnCheckAnswer.UseVisualStyleBackColor = true;
+            this.btnCheckAnswer.Click += new System.EventHandler(this.btnCheckAnswer_Click);
             // 
             // panel1
             // 
